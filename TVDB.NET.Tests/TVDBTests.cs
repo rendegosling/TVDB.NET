@@ -27,7 +27,7 @@ namespace TVDB.NET.Tests
 
             //Assert
             Assert.True(results.Any());
-            Assert.True(results.Count == 14, "Expected 5 but {0}", results.Count);
+            Assert.True(results.Count == 14, "Expected 14 but {0}", results.Count);
         }
 
         [Test]

@@ -17,7 +17,7 @@ namespace TVDB.NET.Tests
         }
 
         [Test]
-        public void SearchShow_GameOf_WillReturn_5Item()
+        public void SearchSeries_GameOf_WillReturn_5Item()
         {
             if (string.IsNullOrEmpty(YourTheTVDBAPIKey))
             {
@@ -28,7 +28,7 @@ namespace TVDB.NET.Tests
             var tvdb = new TVDBNet(YourTheTVDBAPIKey);
 
             //act
-            var results = tvdb.Search("Game of").ToList();
+            var results = tvdb.GetSeries("Game of").ToList();
 
             //Assert
             Assert.True(results.Any());
@@ -36,7 +36,7 @@ namespace TVDB.NET.Tests
         }
 
         [Test]
-        public void SearchShow_GameOfThrones_WillReturn_1Item()
+        public void SearchSeries_GameOfThrones_WillReturn_1Item()
         {
             if (string.IsNullOrEmpty(YourTheTVDBAPIKey))
             {
@@ -47,7 +47,7 @@ namespace TVDB.NET.Tests
             var tvdb = new TVDBNet(YourTheTVDBAPIKey);
 
             //act
-            var results = tvdb.Search("Game of Thrones").ToList();
+            var results = tvdb.GetSeries("Game of Thrones").ToList();
 
             //Assert
             Assert.True(results.Any());

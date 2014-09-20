@@ -21,11 +21,11 @@ namespace TVDB.NET
         public string ApiKey { get; set; }
 
 
-        public IEnumerable<Series> Search(string show)
+        public IEnumerable<Series> GetSeries(string seriesName)
         {
             var client = new RestClient(BaseUrl);
             var request = new RestRequest("api/GetSeries.php", Method.GET);
-            request.AddParameter("seriesname", show);
+            request.AddParameter("seriesname", seriesName);
             var response = client.Execute<List<Series>>(request);
             return response.Data;
         }

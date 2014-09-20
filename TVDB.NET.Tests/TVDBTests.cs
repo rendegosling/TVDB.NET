@@ -19,22 +19,32 @@ namespace TVDB.NET.Tests
         [Test]
         public void SearchShow_GameOf_WillReturn_5Item()
         {
+            if (string.IsNullOrEmpty(YourTheTVDBAPIKey))
+            {
+                throw new Exception(APIKeyMissing);
+            }
+
             //arrange
-            var tvdb = new TVDBNet(ApiKey);
+            var tvdb = new TVDBNet(YourTheTVDBAPIKey);
 
             //act
             var results = tvdb.Search("Game of").ToList();
 
             //Assert
             Assert.True(results.Any());
-            Assert.True(results.Count == 14, "Expected 14 but {0}", results.Count);
+            Assert.True(results.Count == 15, "Expected 15 but {0}", results.Count);
         }
 
         [Test]
         public void SearchShow_GameOfThrones_WillReturn_1Item()
         {
+            if (string.IsNullOrEmpty(YourTheTVDBAPIKey))
+            {
+                throw new Exception(APIKeyMissing);
+            }
+
             //arrange
-            var tvdb = new TVDBNet(ApiKey);
+            var tvdb = new TVDBNet(YourTheTVDBAPIKey);
 
             //act
             var results = tvdb.Search("Game of Thrones").ToList();

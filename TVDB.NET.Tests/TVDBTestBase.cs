@@ -8,7 +8,8 @@ namespace TVDB.NET.Tests
     public abstract class TVDBTestBase
     {
         //put your api key here
-        protected const string ApiKey = "";
+        protected const string YourTheTVDBAPIKey = "";
+        protected const string APIKeyMissing = "Plese get an api key from the tvdb first!";
 
         protected string GetTestXml()
         {

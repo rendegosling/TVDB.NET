@@ -53,18 +53,5 @@ namespace TVDB.NET.Tests
             Assert.True(results.Any());
             Assert.True(results.Count == 1, "Expected 1 but {0}", results.Count);
         }
-
-        [Test]
-        public void TvDbResponseSerializer_Deserialize_ReturnsObject()
-        {
-            var xml = GetTestXml();
-
-            var deserializer = new TVDBSerializer();
-
-            var series = deserializer.Deserialize(xml);
-
-            Assert.That(series != null);
-
-        }
     }
 }

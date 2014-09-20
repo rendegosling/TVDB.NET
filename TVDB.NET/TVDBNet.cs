@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Net;
 using System.Xml.Linq;
+using RestSharp;
 
 namespace TVDB.NET
 {
@@ -9,13 +10,11 @@ namespace TVDB.NET
     {
         
         private const string BaseUrl = "http://thetvdb.com";
-        private TVDBSerializer _serializer ;
         public TVDBNet(string apiKey)
         {
             if (string.IsNullOrEmpty(apiKey)) throw new ArgumentException("Valid thetvdb.com Api Key expected!");
 
             ApiKey = apiKey;
-            _serializer = new TVDBSerializer();
         }
 
 
@@ -24,16 +23,11 @@ namespace TVDB.NET
 
         public IEnumerable<Series> Search(string show)
         {
-            using (var webClient = new WebClient())
-            {
-                var response = webClient.DownloadString(string.Format("{0}/api/GetSeries.php?seriesname={1}", BaseUrl, show));
-                return _serializer.Deserialize(response);
-            }
-        }
-
-        private XDocument GetShow(int id)
-        {
-            throw new NotImplementedException();
+            var client = new RestClient(BaseUrl);
+            var request = new RestRequest("api/GetSeries.php", Method.GET);
+            request.AddParameter("seriesname", show);
+            var response = client.Execute<List<Series>>(request);
+            return response.Data;
         }
     }
 }

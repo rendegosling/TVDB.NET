@@ -1,4 +1,6 @@
-﻿namespace TVDB.NET
+﻿using RestSharp.Deserializers;
+
+namespace TVDB.NET
 {
     public class Series
     {
@@ -11,5 +13,7 @@
         public string Network { get; set; }
         public string ImdbId { get; set; }
         public string SeriesName { get; set; }
+        public string SeriesId { get; set; }
+        public string Zap2ItId { get; set; }
     }
 }

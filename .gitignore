@@ -178,3 +178,6 @@ _ReSharper*/
 *.resharper
 [Tt]est[Rr]esult*
 *.sass-cache
+
+#Project related
+TVDBTestBase.cs
